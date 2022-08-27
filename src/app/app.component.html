@@ -5,28 +5,63 @@
   </div>
 </nav>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <h5>Enter a new set of class information</h5>
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Class" aria-label="First name">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Start date" aria-label="Last name">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="End date" aria-label="Last name">
-            </div>
-            <div class="col">
-              <button class="btn btn-primary btn-small">Add</button>
-            </div>
-          </div>
+<div class="container my-3">
+  <div class="card">
+    <h5>Enter a new set of class information</h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Subject"
+            [(ngModel)]="subject"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Start date"
+            [(ngModel)]="start"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="End date"
+            [(ngModel)]="end"
+          />
+        </div>
+        <div class="col">
+          <button class="btn btn-primary btn-small" (click)="AddSubject()">Add</button>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Subject</th>
+            <th scope="col">Start</th>
+            <th scope="col">End</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of subjects">
+            <td>{{s.name}}</td>
+            <td>{{s.start}}</td>
+            <td>@{{s.end}}</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>
