@@ -25,6 +25,7 @@ export class AppComponent {
 
   subjects: Subject[] = [];
 
+  targetStart?: string;
   targetEnd?: string;
 
   // thisaldsfkj
