@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "fe58fbdd-8cae-4c66-8199-b79ba27e7103"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,6 +34,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@forevolve/bootstrap-dark/dist/css/toggle-bootstrap.min.css",
+              "./node_modules/@forevolve/bootstrap-dark/dist/css/toggle-bootstrap-dark.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -99,6 +104,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@forevolve/bootstrap-dark/dist/css/toggle-bootstrap.min.css",
+              "./node_modules/@forevolve/bootstrap-dark/dist/css/toggle-bootstrap-dark.min.css",
               "src/styles.scss"
             ],
             "scripts": []
