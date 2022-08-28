@@ -1,17 +1,44 @@
 <!-- As a heading -->
 <nav class="navbar navbar-dark bg-dark">
+  <!-- Top navigation bar -->
   <div class="container-fluid">
     <span class="navbar-brand mb-0 h1">Amethyst</span>
 
-
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" [(ngModel)]="targetStart" placeholder="Target Start">
-      <input class="form-control mr-sm-2" [(ngModel)]="targetEnd" placeholder="Target End">
-    </form>
 
+      <span class="navbar-text">Date:</span>
+      <input
+        type="date"
+        class="form-control mr-sm-2"
+        [(ngModel)]="today"
+        [ngModelOptions]="{standalone: true}"
+        placeholder="Target Start"
+        (blur)="Update()"
+      />
+
+      <span class="navbar-text">Start: </span>
+      <input
+        type="date"
+        class="form-control mr-sm-2"
+        [(ngModel)]="model.targetStart"
+        [ngModelOptions]="{standalone: true}"
+        placeholder="Target Start"
+        (blur)="Update()"
+      />
+      <span class="navbar-text">End: </span>
+      <input
+        type="date"
+        class="form-control mr-sm-2"
+        [(ngModel)]="model.targetEnd"
+        [ngModelOptions]="{standalone: true}"
+        placeholder="Target End"
+        (blur)="Update()"
+      />
+    </form>
   </div>
 </nav>
 
+<!-- Place to enter new classes -->
 <div class="container my-3">
   <div class="card">
     <h5>Enter a new set of class information</h5>
@@ -22,60 +49,79 @@
             type="text"
             class="form-control"
             placeholder="Subject"
-            [(ngModel)]="subject"
+            [(ngModel)]="newSubject"
+            [ngModelOptions]="{standalone: true}"
           />
         </div>
         <div class="col">
           <input
-            type="text"
+            type="date"
             class="form-control"
             placeholder="Start date"
-            [(ngModel)]="start"
+            [(ngModel)]="newStart"
+            [ngModelOptions]="{standalone: true}"
           />
         </div>
         <div class="col">
           <input
-            type="text"
+            type="date"
             class="form-control"
             placeholder="End date"
-            [(ngModel)]="end"
+            [(ngModel)]="newEnd"
+            [ngModelOptions]="{standalone: true}"
           />
         </div>
         <div class="col">
-          <button class="btn btn-primary btn-small" (click)="AddSubject()">Add</button>
+          <button class="btn btn-primary btn-small" (click)="AddSubject()">
+            Add
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Display all classes -->
 <div class="container">
   <div class="row">
     <div class="col">
-
       <table class="table">
         <thead>
           <tr>
             <th scope="col">Subject</th>
             <th scope="col">Start</th>
             <th scope="col">End</th>
+            <th scope="col">Franklin % Complete</th>
+            <th scope="col">Actual Target % ({{currentPercent}})</th>
+
+
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let s of subjects">
-            <td>{{s.name}}</td>
-            <td>{{s.start}}</td>
-            <td>{{s.end}}</td>
+          <tr *ngFor="let s of model.subjects"
+            class="{{s.class}}">
+            <td>{{ s.name }}</td>
+            <td>{{ s.start }}</td>
+            <td>{{ s.end }}</td>
+
+            <td>
+              <input
+                type="number"
+                [(ngModel)]="s.franklinPercentComplete"
+                [ngModelOptions]="{standalone: true}"
+                class="form-control"
+                placeholder="Franklen % Complete"
+                (blur)="Update()"
+              />
+            </td>
+            <td>{{s.status}}</td>
           </tr>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>
 
-
-
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <embed src="http://student.franklinvirtualschools.com/login.aspx" style="height: 1200px; width: 100%;" title="Franklin hopefully"/>
-
-</div>
+</div> -->
